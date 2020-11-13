@@ -15,6 +15,20 @@
 		840F49312546DF310019D707 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840F492F2546DF310019D707 /* LaunchScreen.storyboard */; };
 		840F493A2546DFB10019D707 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840F49382546DFB00019D707 /* RootViewController.xib */; };
 		840F493B2546DFB10019D707 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F49392546DFB10019D707 /* RootViewController.swift */; };
+		8448FEF42549742400745439 /* ContentionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448FEF22549742400745439 /* ContentionTableViewCell.swift */; };
+		8448FEF52549742400745439 /* ContentionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8448FEF32549742400745439 /* ContentionTableViewCell.xib */; };
+		8455148C254CE800005A0F08 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455148B254CE800005A0F08 /* Extensions.swift */; };
+		848FF6E425473B16001F8B48 /* Contention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FF6E325473B16001F8B48 /* Contention.swift */; };
+		848FF6E62548DD00001F8B48 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FF6E52548DD00001F8B48 /* ModelController.swift */; };
+		84DE07E3254E10440058C121 /* DataExample.json in Resources */ = {isa = PBXBuildFile; fileRef = 84DE07E2254E10440058C121 /* DataExample.json */; };
+		84DE07E5254E160B0058C121 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE07E4254E160B0058C121 /* DataLoader.swift */; };
+		84DE07E8255479C10058C121 /* CryptoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DE07E7255479C00058C121 /* CryptoKit.framework */; };
+		84DE07EA255479E60058C121 /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE07E9255479E60058C121 /* Encryption.swift */; };
+		84DE07EC25547B410058C121 /* 3254239.json in Resources */ = {isa = PBXBuildFile; fileRef = 84DE07EB25547B410058C121 /* 3254239.json */; };
+		84DE07F02557AF120058C121 /* AddContentionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE07EE2557AF120058C121 /* AddContentionViewController.swift */; };
+		84DE07F12557AF120058C121 /* AddContentionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DE07EF2557AF120058C121 /* AddContentionViewController.xib */; };
+		84F5BD2D255BA2DD004A4652 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5BD2B255BA2DD004A4652 /* BookmarksViewController.swift */; };
+		84F5BD2E255BA2DD004A4652 /* BookmarksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F5BD2C255BA2DD004A4652 /* BookmarksViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +42,21 @@
 		840F49322546DF310019D707 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		840F49382546DFB00019D707 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		840F49392546DFB10019D707 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		8448FEF22549742400745439 /* ContentionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentionTableViewCell.swift; sourceTree = "<group>"; };
+		8448FEF32549742400745439 /* ContentionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentionTableViewCell.xib; sourceTree = "<group>"; };
+		8455148B254CE800005A0F08 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		848FF6E325473B16001F8B48 /* Contention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contention.swift; sourceTree = "<group>"; };
+		848FF6E52548DD00001F8B48 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		84DE07E2254E10440058C121 /* DataExample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DataExample.json; sourceTree = "<group>"; };
+		84DE07E4254E160B0058C121 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
+		84DE07E7255479C00058C121 /* CryptoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoKit.framework; path = System/Library/Frameworks/CryptoKit.framework; sourceTree = SDKROOT; };
+		84DE07E9255479E60058C121 /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
+		84DE07EB25547B410058C121 /* 3254239.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 3254239.json; sourceTree = "<group>"; };
+		84DE07ED2555146C0058C121 /* libcommonCrypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcommonCrypto.tbd; path = usr/lib/system/libcommonCrypto.tbd; sourceTree = SDKROOT; };
+		84DE07EE2557AF120058C121 /* AddContentionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentionViewController.swift; sourceTree = "<group>"; };
+		84DE07EF2557AF120058C121 /* AddContentionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddContentionViewController.xib; sourceTree = "<group>"; };
+		84F5BD2B255BA2DD004A4652 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
+		84F5BD2C255BA2DD004A4652 /* BookmarksViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookmarksViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DE07E8255479C10058C121 /* CryptoKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +76,7 @@
 			children = (
 				840F49202546DF2B0019D707 /* TreeNote */,
 				840F491F2546DF2B0019D707 /* Products */,
+				84DE07E6255479C00058C121 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +91,10 @@
 		840F49202546DF2B0019D707 /* TreeNote */ = {
 			isa = PBXGroup;
 			children = (
-				840F49392546DFB10019D707 /* RootViewController.swift */,
-				840F49382546DFB00019D707 /* RootViewController.xib */,
+				84DE07E1254E100F0058C121 /* resources */,
+				8455148A254CE7E3005A0F08 /* Extensions */,
+				848FF6E225473B07001F8B48 /* Model */,
+				848FF6E12547370D001F8B48 /* view controllers */,
 				840F49212546DF2B0019D707 /* AppDelegate.swift */,
 				840F49232546DF2B0019D707 /* SceneDelegate.swift */,
 				840F49252546DF2B0019D707 /* ViewController.swift */,
@@ -69,8 +102,60 @@
 				840F492F2546DF310019D707 /* LaunchScreen.storyboard */,
 				840F49322546DF310019D707 /* Info.plist */,
 				840F492A2546DF2B0019D707 /* TreeNote.xcdatamodeld */,
+				84DE07E9255479E60058C121 /* Encryption.swift */,
 			);
 			path = TreeNote;
+			sourceTree = "<group>";
+		};
+		8455148A254CE7E3005A0F08 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8455148B254CE800005A0F08 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		848FF6E12547370D001F8B48 /* view controllers */ = {
+			isa = PBXGroup;
+			children = (
+				840F49392546DFB10019D707 /* RootViewController.swift */,
+				840F49382546DFB00019D707 /* RootViewController.xib */,
+				8448FEF22549742400745439 /* ContentionTableViewCell.swift */,
+				8448FEF32549742400745439 /* ContentionTableViewCell.xib */,
+				84DE07EE2557AF120058C121 /* AddContentionViewController.swift */,
+				84DE07EF2557AF120058C121 /* AddContentionViewController.xib */,
+				84F5BD2B255BA2DD004A4652 /* BookmarksViewController.swift */,
+				84F5BD2C255BA2DD004A4652 /* BookmarksViewController.xib */,
+			);
+			path = "view controllers";
+			sourceTree = "<group>";
+		};
+		848FF6E225473B07001F8B48 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				848FF6E325473B16001F8B48 /* Contention.swift */,
+				848FF6E52548DD00001F8B48 /* ModelController.swift */,
+				84DE07E4254E160B0058C121 /* DataLoader.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84DE07E1254E100F0058C121 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				84DE07EB25547B410058C121 /* 3254239.json */,
+				84DE07E2254E10440058C121 /* DataExample.json */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		84DE07E6255479C00058C121 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84DE07ED2555146C0058C121 /* libcommonCrypto.tbd */,
+				84DE07E7255479C00058C121 /* CryptoKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,8 +215,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8448FEF52549742400745439 /* ContentionTableViewCell.xib in Resources */,
 				840F49312546DF310019D707 /* LaunchScreen.storyboard in Resources */,
 				840F492E2546DF310019D707 /* Assets.xcassets in Resources */,
+				84DE07F12557AF120058C121 /* AddContentionViewController.xib in Resources */,
+				84F5BD2E255BA2DD004A4652 /* BookmarksViewController.xib in Resources */,
+				84DE07E3254E10440058C121 /* DataExample.json in Resources */,
+				84DE07EC25547B410058C121 /* 3254239.json in Resources */,
 				840F493A2546DFB10019D707 /* RootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,11 +233,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DE07E5254E160B0058C121 /* DataLoader.swift in Sources */,
 				840F493B2546DFB10019D707 /* RootViewController.swift in Sources */,
+				8455148C254CE800005A0F08 /* Extensions.swift in Sources */,
 				840F49262546DF2B0019D707 /* ViewController.swift in Sources */,
 				840F49222546DF2B0019D707 /* AppDelegate.swift in Sources */,
 				840F49242546DF2B0019D707 /* SceneDelegate.swift in Sources */,
+				84F5BD2D255BA2DD004A4652 /* BookmarksViewController.swift in Sources */,
+				8448FEF42549742400745439 /* ContentionTableViewCell.swift in Sources */,
+				84DE07F02557AF120058C121 /* AddContentionViewController.swift in Sources */,
+				848FF6E62548DD00001F8B48 /* ModelController.swift in Sources */,
+				848FF6E425473B16001F8B48 /* Contention.swift in Sources */,
 				840F492C2546DF2B0019D707 /* TreeNote.xcdatamodeld in Sources */,
+				84DE07EA255479E60058C121 /* Encryption.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +314,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -271,7 +369,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

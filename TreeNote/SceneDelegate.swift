@@ -9,15 +9,34 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    static var shared:SceneDelegate!
+    
+    var navigationController: UINavigationController!
+    
     var window: UIWindow?
-
+    var rootViewCotroller:RootViewController!
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-            window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-            window?.windowScene = windowScene
-            //window?.rootViewController = RootViewController()
-            window?.rootViewController = RootViewController(nibName: "RootViewController", bundle: nil)
-            window?.makeKeyAndVisible()
+        
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window!.windowScene = windowScene
+        SceneDelegate.shared = self
+        
+        rootViewCotroller = RootViewController(nibName: "RootViewController", bundle: nil)
+        
+        self.navigationController = UINavigationController(rootViewController: rootViewCotroller)
+        window!.rootViewController = self.navigationController
+        window!.makeKeyAndVisible()
+        
+//        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+//        window!.windowScene = windowScene
+//
+//        navigationController = TestViewController(nibName: "TestViewController", bundle: nil);
+//        window!.rootViewController = navigationController.viewControllers[0]
+//        self.navigationController = UINavigationController(rootViewController: window!.rootViewController!)
+//        window!.makeKeyAndVisible()
+        //
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
