@@ -23,6 +23,19 @@ class ContentionTableViewCell: UITableViewCell
     {
         _contention = contention
         _delegate = delegate
+        
+        var colorString = "#FFFFFF"
+        if contention.topic
+        {
+            colorString = "#e6e6e6"
+        }
+        if ( contention.collapce  )
+        {
+            colorString = "#9b9bff"
+        }
+        
+        self.contentView.backgroundColor = UIColor.colorFromHexString(colorString)
+        
         self.label.text = contention.text
         
         if ( contention.id == viewContentionId || contention.childs().count == 0 )
@@ -40,13 +53,8 @@ class ContentionTableViewCell: UITableViewCell
             cr.constant = CGFloat( intendantion)
             self.layoutIfNeeded()
         }
+        
     }
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//
-//        // Initialization code
-//    }
     
     func contention() -> Contention
     {

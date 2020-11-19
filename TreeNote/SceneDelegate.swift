@@ -22,21 +22,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window!.windowScene = windowScene
         SceneDelegate.shared = self
-        
         rootViewCotroller = RootViewController(nibName: "RootViewController", bundle: nil)
         
         self.navigationController = UINavigationController(rootViewController: rootViewCotroller)
         window!.rootViewController = self.navigationController
+//        window!.rootViewController = TestImageViewController(nibName: "TestImageViewController", bundle: nil)
         window!.makeKeyAndVisible()
-        
-//        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-//        window!.windowScene = windowScene
-//
-//        navigationController = TestViewController(nibName: "TestViewController", bundle: nil);
-//        window!.rootViewController = navigationController.viewControllers[0]
-//        self.navigationController = UINavigationController(rootViewController: window!.rootViewController!)
-//        window!.makeKeyAndVisible()
-        //
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -13,8 +13,8 @@ class ModelController {
         return instance;
     }()
     
-    var rootNode:Contention!;
-    // init from json
+    var rootNode:Contention!
+    
     func childsForNodeId(id:String) -> [String] {
         return [];
     }
@@ -32,40 +32,48 @@ class ModelController {
         }
         return id
     }
+    public func saveData()
+    {
+        var contentionsArray:[Contention] = []
+        ModelController.recursiveAddToArray(self.rootNode, &contentionsArray)
+        
+        DataLoader.saveContentions(contentionsArray)
+    }
+    
+    static func recursiveAddToArray(_ contention:Contention,  _ array:inout [Contention])
+    {
+        array.append(contention)
+        for childContention in contention.childs()
+        {
+            recursiveAddToArray(childContention, &array)
+        }
+    }
+    
     public func loadData()
     {
-        let mainUrl = Bundle.main.url(forResource: "DataExample", withExtension: "json")!
-        let contentions =  DataLoader.decodeData(pathName: mainUrl)
+        let contentions =  DataLoader.loadData()
         
         for contention in contentions {
-            addContention(contention)
+            addContentionInternal(contention)
+        }
+        if contentionsMap["root"] == nil
+        {
+            addContentionInternal(Contention("root", "root","-1"))
         }
         self.rootNode = contentionsMap["root"]
+        self.rootNode.topic = true
         reloadTopicsMap()
     }
+    
     private init()
     {
+        
     }
+    
     func reloadTopicsMap()
     {
         childsTopicsMap = [:]
         recursiveAddChildTopics(rootNode)
-//        for( _, contention) in contentionsMap
-//        {
-//            if contention.topic
-//            {
-//                childsTopicsMap[contention.id] = []
-//            }
-//        }
-//
-//        for( id, _) in childsTopicsMap
-//        {
-//            let contention = contentionsMap[id]!
-//            if let parentTopic = contention.parentTopic()
-//            {
-//                childsTopicsMap[parentTopic.id]!.append(contention)
-//            }
-//        }
     }
     func recursiveAddChildTopics(_ contention: Contention)
     {
@@ -82,7 +90,8 @@ class ModelController {
             recursiveAddChildTopics(childContention)
         }
     }
-    public func addContention(_ contention:Contention)
+    
+    func addContentionInternal(_ contention:Contention)
     {
         contentionsMap[contention.id] = contention
         childsMap[contention.id] = []
@@ -92,6 +101,13 @@ class ModelController {
             childsMap[contention.parentContentionId]?.append(contention)
         }
     }
+    
+    public func addContention(_ contention:Contention)
+    {
+        addContentionInternal(contention)
+        saveData()
+    }
+    
     public func removeContention(_ contention:Contention)
     {
         if let parentContention = contention.parent()
@@ -100,6 +116,14 @@ class ModelController {
             contentionsMap[contention.id] = nil
         }
         reloadTopicsMap()
+        saveData()
+    }
+    
+    public func markAsTopic(_ contention:Contention, _ topic:Bool)
+    {
+        contention.topic = topic
+        self.reloadTopicsMap()
+        saveData()
     }
     
 }

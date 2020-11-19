@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+ // rename to ContentionsVC
 class RootViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ContentionTableViewCellDelegate {
     @IBOutlet weak var tableView: UITableView!
     public var contentionId = "root"
@@ -21,6 +21,7 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
         
         tableView.register(UINib(nibName: "ContentionTableViewCell", bundle: nil), forCellReuseIdentifier: "ContentionTableViewCell")
         tableView.estimatedRowHeight = 44.0
@@ -43,55 +44,52 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return indexPath.row != 0
     }
-//    - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
     
+    func selectedCellIndexPath() -> IndexPath
+    {
+        let row = self.cells.firstIndex(where: { cell in return cell.contention().id == self.selectedContentionId})
+        if let row = row{
+            return IndexPath(row: row, section: 0)
+        }
+        else
+        {
+            self.selectedContentionId = self.cells[0].contention().id
+            return IndexPath(row: 0, section: 0)
+        }
+    }
     func reloadData(_ reloadTable:Bool)
     {
-        print("reloadData")
         let intendantion = 10
         cells = []
         var cell = tableView.dequeueReusableCell(withIdentifier: "ContentionTableViewCell") as! ContentionTableViewCell
         cell.setData(rootContention(), self, intendantion, self.contentionId)
         cells.append(cell)
-        
         for contention in rootContention().childs()
         {
             cell = tableView.dequeueReusableCell(withIdentifier: "ContentionTableViewCell") as! ContentionTableViewCell
             cell.setData(contention, self, intendantion + 20, self.contentionId)
             cells.append(cell)
-            for subContention in contention.childs()
+            if !contention.collapce
             {
-                cell = tableView.dequeueReusableCell(withIdentifier: "ContentionTableViewCell") as! ContentionTableViewCell
-                cell.setData(subContention, self, intendantion + 40, self.contentionId)
-                cells.append(cell)
+                for subContention in contention.childs()
+                {
+                    cell = tableView.dequeueReusableCell(withIdentifier: "ContentionTableViewCell") as! ContentionTableViewCell
+                    cell.setData(subContention, self, intendantion + 40, self.contentionId)
+                    cells.append(cell)
+                }
             }
         }
         self.tableView.reloadData()
-    }
-    
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-//        print("moveToContention")
-        let cell:ContentionTableViewCell? = tableView.cellForRow(at: indexPath) as! ContentionTableViewCell?
-        if let cell = cell
-        {
-            let nextLevelViewController = RootViewController(nibName: "RootViewController", bundle: nil)
-            nextLevelViewController.contentionId = cell.contention().id
-            self.navigationController?.pushViewController(nextLevelViewController, animated: true)
-        }
-        
+        self.tableView.selectRow(at: selectedCellIndexPath(), animated: false, scrollPosition: .middle)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         reloadData(true)
     }
-//    override func viewDidAppear(_ animated: Bool) {
-//        reloadData()
-//    }
-//
+    
     func selectContention(_ contention:Contention)
     {
         self.selectedContentionId = contention.id
-        print("selectContention")
     }
     
     func moveToContention(_ contention: Contention)
@@ -99,20 +97,20 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
         let nextLevelViewController = RootViewController(nibName: "RootViewController", bundle: nil)
         nextLevelViewController.contentionId = contention.id
         self.navigationController?.pushViewController(nextLevelViewController, animated: true)
-        
-        print("moveToContention")
     }
     
     @objc func actionButton(sender: UIBarButtonItem)
     {
-        print("actionButton")
+        let selectActionViewController = SelectActionViewController(nibName: "SelectActionViewController", bundle: nil)
+        selectActionViewController.contention = ModelController.shared.contentionsMap[self.selectedContentionId]
+        selectActionViewController.rootViewController = self
+        self.present(selectActionViewController, animated: true, completion: nil)
     }
     
     @objc func topicButton(sender: UIBarButtonItem)
     {
         let bookmarksViewController = BookmarksViewController(nibName: "BookmarksViewController", bundle: nil)
         self.present(bookmarksViewController, animated: true, completion: nil)
-        print("topicButton")
     }
     @objc func addButton(sender: UIBarButtonItem)
     {
@@ -120,8 +118,6 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         addContentionViewController.parentContentionId = self.selectedContentionId
         self.navigationController?.pushViewController(addContentionViewController, animated: true)
-        
-        print("addButton")
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

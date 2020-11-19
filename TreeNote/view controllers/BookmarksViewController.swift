@@ -21,6 +21,10 @@ class BookmarksViewController:  UIViewController, UITableViewDelegate, UITableVi
         reloadData()
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
     func reloadData()
     {
         print("reloadData")
@@ -74,8 +78,6 @@ class BookmarksViewController:  UIViewController, UITableViewDelegate, UITableVi
         SceneDelegate.shared.rootViewCotroller.contentionId = contention.id
         SceneDelegate.shared.rootViewCotroller.navigationController?.popToRootViewController(animated: false)
         SceneDelegate.shared.rootViewCotroller.reloadData(true)
-//        self.navigationController?.popViewController(animated: false)
-        print("selectContention")
         self.cancel()
     }
     
