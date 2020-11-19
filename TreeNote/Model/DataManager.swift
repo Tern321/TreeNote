@@ -7,26 +7,15 @@
 
 import UIKit
 
-class DataLoader {
+class DataManager
+{
+    static let dataFileUrl = getDocumentsDirectory().appendingPathComponent("data.json")
     
-    static var fm = FileManager.default
-    
-    public static func decodeData(pathName: URL) -> [Contention]
-    {
-        do{
-            let jsonData = try Data(contentsOf: pathName)
-            let decoder = JSONDecoder()
-            let contentionsList:[Contention] = try decoder.decode([Contention].self, from: jsonData)
-            
-            return contentionsList
-        } catch
-        {
-            print("Unexpected error: \(error).")
-        }
-        return []
+    static func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
     }
     
-    static let dataFileUrl = getDocumentsDirectory().appendingPathComponent("data.json")
     public static func loadData() -> [Contention]
     {
         do{
@@ -70,7 +59,7 @@ class DataLoader {
         do{
             let encoder = JSONEncoder()
             let jsonString = try encoder.encode(contentions)
-            DataLoader.saveData(jsonString)
+            DataManager.saveData(jsonString)
         } catch
         {
             print("Unexpected error: \(error).")
@@ -78,9 +67,36 @@ class DataLoader {
         
     }
     
-    static func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
+    public static func saveImage(_ image:UIImage, forContention contention:Contention)
+    {
+        DispatchQueue.global(qos: .background).async
+        {
+            if let data = image.jpegData(compressionQuality: 0.8)
+            {
+                let fileUrl = getDocumentsDirectory().appendingPathComponent("\(contention.id).jpeg")
+                try? data.write(to: fileUrl)
+            }
+        }
+    }
+    public static func getImageForContention(_ contention:Contention?) -> UIImage?
+    {
+        if let contention = contention
+        {
+            do
+            {
+                let fileUrl = getDocumentsDirectory().appendingPathComponent("\(contention.id).jpeg")
+                if FileManager.default.fileExists(atPath: fileUrl.path)
+                {
+                    let imageData = try Data(contentsOf: fileUrl)
+                    return UIImage(data: imageData)
+                }
+            }
+            catch
+            {
+                print("Unexpected error: \(error).")
+            }
+        }
+        return nil
     }
     
     public static func onStart()

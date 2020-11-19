@@ -37,7 +37,7 @@ class ModelController {
         var contentionsArray:[Contention] = []
         ModelController.recursiveAddToArray(self.rootNode, &contentionsArray)
         
-        DataLoader.saveContentions(contentionsArray)
+        DataManager.saveContentions(contentionsArray)
     }
     
     static func recursiveAddToArray(_ contention:Contention,  _ array:inout [Contention])
@@ -51,7 +51,7 @@ class ModelController {
     
     public func loadData()
     {
-        let contentions =  DataLoader.loadData()
+        let contentions =  DataManager.loadData()
         
         for contention in contentions {
             addContentionInternal(contention)

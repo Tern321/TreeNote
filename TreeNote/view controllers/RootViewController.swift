@@ -57,6 +57,7 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
             return IndexPath(row: 0, section: 0)
         }
     }
+    
     func reloadData(_ reloadTable:Bool)
     {
         let intendantion = 10
