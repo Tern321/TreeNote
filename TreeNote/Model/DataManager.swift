@@ -9,7 +9,8 @@ import UIKit
 
 class DataManager
 {
-    static let dataFileUrl = getDocumentsDirectory().appendingPathComponent("data.json")
+    static let dataFileName = "data.json"
+    static let dataFileUrl = getDocumentsDirectory().appendingPathComponent(dataFileName)
     
     static func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -22,7 +23,7 @@ class DataManager
             let jsonData = try Data(contentsOf: dataFileUrl)
             let decoder = JSONDecoder()
             let contentionsList:[Contention] = try decoder.decode([Contention].self, from: jsonData)
-            
+            cleanGarbageImages(contentionsList)
             return contentionsList
         } catch
         {
@@ -30,6 +31,35 @@ class DataManager
         }
         return []
     }
+    
+    public static func cleanGarbageImages(_ contentions:[Contention])
+    {
+        DispatchQueue.global(qos: .background).async
+        {
+            let urls = FileManager.default.urls(for: .documentDirectory)
+            
+            var contentionIdDictionary:[String:String] = [:]
+            contentionIdDictionary[dataFileName] = ""
+            
+            for contention in contentions
+            {
+                contentionIdDictionary["\(contention.id).jpeg"] = ""
+            }
+            for url in urls
+            {
+                if !contentionIdDictionary.containsKey(url.lastPathComponent)
+                {
+                    do {
+//                        print("delete file \(url)")
+                        try FileManager.default.removeItem(at: url)
+                    } catch {
+                        print("Could not delete file: \(error)")
+                    }
+                }
+            }
+        }
+    }
+    
     static let dataSaveLock = NSLock()
     
     // this error should be fixed in next xcode

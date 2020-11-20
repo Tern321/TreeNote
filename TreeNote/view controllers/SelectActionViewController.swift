@@ -44,11 +44,13 @@ class SelectActionViewController:  UIViewController, UITableViewDelegate, UITabl
         ModelController.shared.markAsTopic(contention, !contention.topic)
         self.cancel(true)
     }
+    
     func collapse()
     {
         ModelController.shared.collapse(self.contention)
         self.cancel(true)
     }
+    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
     }

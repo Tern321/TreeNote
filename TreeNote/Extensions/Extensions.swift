@@ -31,3 +31,24 @@ extension UIColor
         )
     }
 }
+
+extension FileManager {
+    func urls(for directory: FileManager.SearchPathDirectory, skipsHiddenFiles: Bool = true ) -> [URL]
+    {
+        let documentsURL = urls(for: directory, in: .userDomainMask)[0]
+        let fileURLs = try? contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil, options: skipsHiddenFiles ? .skipsHiddenFiles : [] )
+        if fileURLs != nil
+        {
+            return fileURLs!
+        }
+        return []
+    }
+}
+
+extension Dictionary {
+    func containsKey(_ key:Key) -> Bool
+    {
+        return self[key] != nil
+    }
+}
+
