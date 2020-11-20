@@ -126,5 +126,12 @@ class ModelController {
         saveData()
     }
     
+    public func collapse(_ contention:Contention)
+    {
+        contention.collapce = !contention.collapce
+        saveData()
+    }
+    
+    
 }
 

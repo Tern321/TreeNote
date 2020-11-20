@@ -46,7 +46,7 @@ class SelectActionViewController:  UIViewController, UITableViewDelegate, UITabl
     }
     func collapse()
     {
-        self.contention.collapce = !self.contention.collapce
+        ModelController.shared.collapse(self.contention)
         self.cancel(true)
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
