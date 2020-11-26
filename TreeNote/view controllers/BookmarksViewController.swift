@@ -31,7 +31,7 @@ class BookmarksViewController:  UIViewController, UITableViewDelegate, UITableVi
         cells = [];
         let rootNode = ModelController.shared.rootNode!;
         
-        recursiveAddChildTopicsToCellList(rootNode,0)
+        recursiveAddChildTopicsToCellList(rootNode, 10)
         
         self.tableView.reloadData()
     }
@@ -43,7 +43,7 @@ class BookmarksViewController:  UIViewController, UITableViewDelegate, UITableVi
         cells.append(cell)
         for subContention in contention.childTopics()
         {
-            recursiveAddChildTopicsToCellList(subContention,intendantion+20)
+            recursiveAddChildTopicsToCellList(subContention,intendantion + 20)
         }
     }
     
@@ -72,7 +72,11 @@ class BookmarksViewController:  UIViewController, UITableViewDelegate, UITableVi
     {
         
     }
-
+    func editContention(_ :Contention)
+    {
+        
+    }
+    
     func selectContention(_ contention:Contention)
     {
         SceneDelegate.shared.rootViewCotroller.contentionId = contention.id

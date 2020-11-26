@@ -22,6 +22,7 @@ class ModelController {
     public var contentionsMap: [String: Contention] = [:]
     public var childsMap: [String: [Contention]] = [:]
     public var childsTopicsMap: [String: [Contention]] = [:]
+    
     public func nextId() -> String
     {
         var id = "\(Int.random(in: 1..<1000000))"
@@ -121,6 +122,10 @@ class ModelController {
     
     public func markAsTopic(_ contention:Contention, _ topic:Bool)
     {
+        if contention.id == "root" && !topic
+        {
+            return
+        }
         contention.topic = topic
         self.reloadTopicsMap()
         saveData()
@@ -131,7 +136,10 @@ class ModelController {
         contention.collapce = !contention.collapce
         saveData()
     }
-    
-    
+    public func saveImage(_ image:UIImage, forContention contention:Contention)
+    {
+        contention.imageUrl = DataManager.saveImageToFile(image, forContention: contention)
+        saveData()
+    }
 }
 

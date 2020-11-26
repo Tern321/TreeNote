@@ -29,11 +29,11 @@
 		84927174255E772E004ADC6A /* SelectActionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84927172255E772E004ADC6A /* SelectActionViewController.xib */; };
 		84927178255E79FF004ADC6A /* ActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84927176255E79FF004ADC6A /* ActionTableViewCell.swift */; };
 		84927179255E79FF004ADC6A /* ActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84927177255E79FF004ADC6A /* ActionTableViewCell.xib */; };
-		84DE07E5254E160B0058C121 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE07E4254E160B0058C121 /* DataManager.swift */; };
 		84DE07E8255479C10058C121 /* CryptoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DE07E7255479C00058C121 /* CryptoKit.framework */; };
 		84DE07EA255479E60058C121 /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE07E9255479E60058C121 /* Encryption.swift */; };
 		84DE07F02557AF120058C121 /* AddContentionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE07EE2557AF120058C121 /* AddContentionViewController.swift */; };
 		84DE07F12557AF120058C121 /* AddContentionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DE07EF2557AF120058C121 /* AddContentionViewController.xib */; };
+		84E170F3256C65180069859C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E170F2256C65180069859C /* DataManager.swift */; };
 		84F5BD2D255BA2DD004A4652 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5BD2B255BA2DD004A4652 /* BookmarksViewController.swift */; };
 		84F5BD2E255BA2DD004A4652 /* BookmarksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F5BD2C255BA2DD004A4652 /* BookmarksViewController.xib */; };
 /* End PBXBuildFile section */
@@ -63,12 +63,12 @@
 		84927172255E772E004ADC6A /* SelectActionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectActionViewController.xib; sourceTree = "<group>"; };
 		84927176255E79FF004ADC6A /* ActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTableViewCell.swift; sourceTree = "<group>"; };
 		84927177255E79FF004ADC6A /* ActionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionTableViewCell.xib; sourceTree = "<group>"; };
-		84DE07E4254E160B0058C121 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		84DE07E7255479C00058C121 /* CryptoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoKit.framework; path = System/Library/Frameworks/CryptoKit.framework; sourceTree = SDKROOT; };
 		84DE07E9255479E60058C121 /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
 		84DE07ED2555146C0058C121 /* libcommonCrypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcommonCrypto.tbd; path = usr/lib/system/libcommonCrypto.tbd; sourceTree = SDKROOT; };
 		84DE07EE2557AF120058C121 /* AddContentionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentionViewController.swift; sourceTree = "<group>"; };
 		84DE07EF2557AF120058C121 /* AddContentionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddContentionViewController.xib; sourceTree = "<group>"; };
+		84E170F2256C65180069859C /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		84F5BD2B255BA2DD004A4652 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		84F5BD2C255BA2DD004A4652 /* BookmarksViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookmarksViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +105,7 @@
 		840F49202546DF2B0019D707 /* TreeNote */ = {
 			isa = PBXGroup;
 			children = (
+				84E170EF256C64BF0069859C /* Managers */,
 				84421FD12566A0CB00A5EF52 /* Threading */,
 				84DE07E1254E100F0058C121 /* resources */,
 				8455148A254CE7E3005A0F08 /* Extensions */,
@@ -163,7 +164,6 @@
 				84DE07E9255479E60058C121 /* Encryption.swift */,
 				848FF6E325473B16001F8B48 /* Contention.swift */,
 				848FF6E52548DD00001F8B48 /* ModelController.swift */,
-				84DE07E4254E160B0058C121 /* DataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -193,6 +193,14 @@
 				84DE07E7255479C00058C121 /* CryptoKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84E170EF256C64BF0069859C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				84E170F2256C65180069859C /* DataManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,7 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84458F532566613200A5CFCA /* SynchronizedObject.swift in Sources */,
-				84DE07E5254E160B0058C121 /* DataManager.swift in Sources */,
+				84E170F3256C65180069859C /* DataManager.swift in Sources */,
 				840F493B2546DFB10019D707 /* RootViewController.swift in Sources */,
 				8455148C254CE800005A0F08 /* Extensions.swift in Sources */,
 				840F49222546DF2B0019D707 /* AppDelegate.swift in Sources */,

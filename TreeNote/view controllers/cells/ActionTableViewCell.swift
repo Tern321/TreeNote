@@ -7,18 +7,18 @@
 
 import UIKit
 
+
 class ActionTableViewCell: UITableViewCell {
 
-    public var cellAction: (() -> Void)?
+    public var cellAction: (()->Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        
-
+    override func setSelected(_ selected: Bool, animated: Bool)
+    {
         if selected
         {
             self.cellAction?();

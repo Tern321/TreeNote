@@ -97,36 +97,17 @@ class DataManager
         
     }
     
-    public static func saveImage(_ image:UIImage, forContention contention:Contention)
+    public static func saveImageToFile(_ image:UIImage, forContention contention:Contention) -> URL
     {
+        let fileUrl = getDocumentsDirectory().appendingPathComponent("\(contention.id).jpeg")
         DispatchQueue.global(qos: .background).async
         {
             if let data = image.jpegData(compressionQuality: 0.8)
             {
-                let fileUrl = getDocumentsDirectory().appendingPathComponent("\(contention.id).jpeg")
                 try? data.write(to: fileUrl)
             }
         }
-    }
-    public static func getImageForContention(_ contention:Contention?) -> UIImage?
-    {
-        if let contention = contention
-        {
-            do
-            {
-                let fileUrl = getDocumentsDirectory().appendingPathComponent("\(contention.id).jpeg")
-                if FileManager.default.fileExists(atPath: fileUrl.path)
-                {
-                    let imageData = try Data(contentsOf: fileUrl)
-                    return UIImage(data: imageData)
-                }
-            }
-            catch
-            {
-                print("Unexpected error: \(error).")
-            }
-        }
-        return nil
+        return fileUrl
     }
     
     public static func onStart()

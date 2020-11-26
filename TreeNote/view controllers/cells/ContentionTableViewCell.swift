@@ -6,10 +6,13 @@
 //
 
 import UIKit
+
+
 @objc protocol ContentionTableViewCellDelegate
 {
     func selectContention(_ :Contention)
     func moveToContention(_ :Contention)
+    func editContention(_ :Contention)
 }
 
 class ContentionTableViewCell: UITableViewCell
@@ -17,6 +20,7 @@ class ContentionTableViewCell: UITableViewCell
     var _contention:Contention!
     weak var _delegate:ContentionTableViewCellDelegate!
     @IBOutlet var moveButton:UIButton!
+    @IBOutlet var editButton:UIButton!
     @IBOutlet var label:UILabel!
     @IBOutlet var intendantionView:UIView!
     public func setData(_ contention:Contention, _ delegate:ContentionTableViewCellDelegate, _ intendantion: Int, _ viewContentionId: String)
@@ -24,17 +28,17 @@ class ContentionTableViewCell: UITableViewCell
         _contention = contention
         _delegate = delegate
         
-        var colorString = "#FFFFFF"
+        var color = UIColor(named: "ContentionColor")
         if contention.topic
         {
-            colorString = "#e6e6e6"
+            color = UIColor(named: "TopicColor")
         }
-        if ( contention.collapce  )
+        if contention.collapce
         {
-            colorString = "#9b9bff"
+            color = UIColor(named: "CollpasedColor")
         }
         
-        self.contentView.backgroundColor = UIColor.colorFromHexString(colorString)
+        self.contentView.backgroundColor = color
         
         self.label.text = contention.text
         
@@ -45,6 +49,17 @@ class ContentionTableViewCell: UITableViewCell
         else
         {
             self.moveButton.alpha = 1
+        }
+        
+        if contention.imageUrl != nil
+        {
+            let image = UIImage(systemName: "photo")
+            self.editButton.setImage(image, for: .normal)
+        }
+        else
+        {
+            let image = UIImage(systemName: "note.text")
+            self.editButton.setImage(image, for: .normal)
         }
         
         let crs = self.contentView.constraints
@@ -78,5 +93,9 @@ class ContentionTableViewCell: UITableViewCell
     @IBAction func moveToContention()
     {
         _delegate.moveToContention(_contention)
+    }
+    @IBAction func editContention()
+    {
+        _delegate.editContention(_contention)
     }
 }

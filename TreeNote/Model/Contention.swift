@@ -14,6 +14,7 @@ class Contention: NSObject, Codable
     var collapce:Bool
     var topic:Bool
     var id:String
+    var imageUrl:URL?
     
     public init(_ id:String, _ text:String, _ parentId:String)
     {
@@ -24,6 +25,27 @@ class Contention: NSObject, Codable
         self.id = id
 //        self.color = "#FFF";
     }
+    
+    public func image() -> UIImage?
+    {
+        if let url = self.imageUrl
+        {
+            do
+            {
+                if FileManager.default.fileExists(atPath: url.path)
+                {
+                    let imageData = try Data(contentsOf: url)
+                    return UIImage(data: imageData)
+                }
+            }
+            catch
+            {
+                print("Unexpected error: \(error).")
+            }
+        }
+        return nil
+    }
+    
     public func childs() -> [Contention]
     {
         return ModelController.shared.childsMap[id]!

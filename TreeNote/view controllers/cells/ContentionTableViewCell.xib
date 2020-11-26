@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ho9-g1-tPm">
-                        <rect key="frame" x="10" y="0.0" width="285" height="44"/>
+                        <rect key="frame" x="30" y="0.0" width="265" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="900" constant="44" id="6xM-qM-FY9"/>
                         </constraints>
@@ -33,17 +33,26 @@
                             <action selector="moveToContention" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hts-xE-SzY"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OuO-tX-SSQ">
+                        <rect key="frame" x="0.0" y="0.0" width="30" height="44"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                        <state key="normal" image="note.text" catalog="system"/>
+                        <connections>
+                            <action selector="editContention" destination="KGk-i7-Jjw" eventType="touchUpInside" id="oET-sD-1ZK"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ho9-g1-tPm" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="bottom" id="3tI-EZ-7hL"/>
                     <constraint firstItem="ho9-g1-tPm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" id="Amo-zt-EmR"/>
                     <constraint firstAttribute="trailing" secondItem="ho9-g1-tPm" secondAttribute="trailing" constant="25" id="NIc-E3-f96"/>
                     <constraint firstItem="ho9-g1-tPm" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="XGg-Jk-trA"/>
-                    <constraint firstItem="ho9-g1-tPm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" identifier="left" id="Zhp-6a-DfG"/>
+                    <constraint firstItem="ho9-g1-tPm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" identifier="left" id="Zhp-6a-DfG"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="editButton" destination="OuO-tX-SSQ" id="ny8-M3-b1E"/>
                 <outlet property="label" destination="ho9-g1-tPm" id="Vvt-0U-YSq"/>
                 <outlet property="moveButton" destination="dfr-MR-oPp" id="Zms-Ru-URE"/>
             </connections>
@@ -52,5 +61,6 @@
     </objects>
     <resources>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
+        <image name="note.text" catalog="system" width="128" height="106"/>
     </resources>
 </document>

@@ -62,22 +62,34 @@ class SelectActionViewController:  UIViewController, UITableViewDelegate, UITabl
         var cell:ActionTableViewCell
         
         cell = tableView.dequeueReusableCell(withIdentifier: "ActionTableViewCell") as! ActionTableViewCell
-        cell.cellAction = self.change
+        cell.cellAction = { [weak self] in
+            guard let self = self else { return }
+            self.change()
+        }
         cell.textLabel?.text = "Edit"
         cells.append(cell)
         
         cell = tableView.dequeueReusableCell(withIdentifier: "ActionTableViewCell") as! ActionTableViewCell
-        cell.cellAction = self.bookmark
+        cell.cellAction = { [weak self] in
+            guard let self = self else { return }
+            self.bookmark()
+        }
         cell.textLabel?.text = "Bookmark"
         cells.append(cell)
         
         cell = tableView.dequeueReusableCell(withIdentifier: "ActionTableViewCell") as! ActionTableViewCell
-        cell.cellAction = self.collapse
+        cell.cellAction = { [weak self] in
+            guard let self = self else { return }
+            self.collapse()
+        }
         cell.textLabel?.text = "Collapse"
         cells.append(cell)
         
         cell = tableView.dequeueReusableCell(withIdentifier: "ActionTableViewCell") as! ActionTableViewCell
-        cell.cellAction = self.remove
+        cell.cellAction = { [weak self] in
+            guard let self = self else { return }
+            self.remove()
+        }
         cell.textLabel?.text = "Remove"
         cells.append(cell)
         
@@ -107,10 +119,15 @@ class SelectActionViewController:  UIViewController, UITableViewDelegate, UITabl
         return cells[indexPath.row]
     }
     
-    @IBAction func cancel(_ animated:Bool)
+    func cancel(_ animated:Bool)
     {
         self.cells = []
         self.dismiss(animated: animated, completion: nil)
         self.rootViewController.reloadData(false)
+    }
+    
+    @IBAction func cancel()
+    {
+        self.cancel(true)
     }
 }

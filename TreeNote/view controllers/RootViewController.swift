@@ -15,27 +15,33 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
     var cells: [ContentionTableViewCell] = []
     func rootContention() -> Contention
     {
-        return ModelController.shared.contentionsMap[contentionId]!
+        if let contention = ModelController.shared.contentionsMap[contentionId]
+        {
+            return contention
+        }
+        else
+        {
+            selectedContentionId = "root"
+            contentionId = "root"
+            self.navigationController?.popViewController(animated: false)
+            return ModelController.shared.contentionsMap[contentionId]!
+        }
     }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        
         tableView.register(UINib(nibName: "ContentionTableViewCell", bundle: nil), forCellReuseIdentifier: "ContentionTableViewCell")
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
         
         let action = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(actionButton(sender:)))
-        
-        let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        space.width = 10
-        
         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButton(sender:)))
-        
         let topic = UIBarButtonItem(title: "Bookmarks", style: .plain, target: self, action: #selector(topicButton(sender:)))
+        let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         
+        space.width = 10
         navigationItem.rightBarButtonItems = [ add, space, action, space, topic]
         
         self.navigationController?.isNavigationBarHidden = false
@@ -60,7 +66,7 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func reloadData(_ reloadTable:Bool)
     {
-        let intendantion = 10
+        let intendantion = 35
         cells = []
         var cell = tableView.dequeueReusableCell(withIdentifier: "ContentionTableViewCell") as! ContentionTableViewCell
         cell.setData(rootContention(), self, intendantion, self.contentionId)
@@ -99,13 +105,20 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
         nextLevelViewController.contentionId = contention.id
         self.navigationController?.pushViewController(nextLevelViewController, animated: true)
     }
+    func editContention(_ contention: Contention)
+    {
+        let addContentionViewController = AddContentionViewController(nibName: "AddContentionViewController", bundle: nil)
+        addContentionViewController.contention = contention
+        addContentionViewController.parentContentionId = contention.parentContentionId
+        self.navigationController?.pushViewController(addContentionViewController, animated: true)
+    }
     
     @objc func actionButton(sender: UIBarButtonItem)
     {
         let selectActionViewController = SelectActionViewController(nibName: "SelectActionViewController", bundle: nil)
         selectActionViewController.contention = ModelController.shared.contentionsMap[self.selectedContentionId]
         selectActionViewController.rootViewController = self
-        self.present(selectActionViewController, animated: true, completion: nil)
+        self.present(selectActionViewController, animated: true, completion: {selectActionViewController.cells=[]})
     }
     
     @objc func topicButton(sender: UIBarButtonItem)

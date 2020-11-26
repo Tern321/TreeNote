@@ -17,6 +17,7 @@ class AddContentionViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet var scrollView:UIScrollView!
     
     var contentionCreated:Bool = true
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -40,7 +41,7 @@ class AddContentionViewController: UIViewController, UIImagePickerControllerDele
         navigationItem.rightBarButtonItems = [ saveButton,cameraButton]
         scrollView.contentSize = CGSize(width: 1200, height: 1200)
         
-        if let image = DataManager.getImageForContention(contention)
+        if let image = contention.image()
         {
             self.imageView.image = image
         }
@@ -58,6 +59,10 @@ class AddContentionViewController: UIViewController, UIImagePickerControllerDele
         }
         contention.text = self.textView.text
         ModelController.shared.saveData()
+        if let image = imageView.image
+        {
+            ModelController.shared.saveImage(image, forContention: contention)
+        }
         
         self.navigationController?.popViewController(animated: false)
     }
@@ -71,11 +76,11 @@ class AddContentionViewController: UIViewController, UIImagePickerControllerDele
         present(imagePicker, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+    {
         imagePicker.dismiss(animated: true, completion: nil)
         imageView.image = info[.originalImage] as? UIImage
         imageView.layer.masksToBounds = true;
-        DataManager.saveImage(imageView.image!, forContention: self.contention)
     }
     
     @objc func galeryAction(sender: UIBarButtonItem)
