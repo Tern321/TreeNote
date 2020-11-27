@@ -53,12 +53,12 @@ class ContentionTableViewCell: UITableViewCell
         
         if contention.imageUrl != nil
         {
-            let image = UIImage(systemName: "photo")
+            let image = UIImage(named: "photo")
             self.editButton.setImage(image, for: .normal)
         }
         else
         {
-            let image = UIImage(systemName: "note.text")
+            let image = UIImage(named: "note.text")
             self.editButton.setImage(image, for: .normal)
         }
         

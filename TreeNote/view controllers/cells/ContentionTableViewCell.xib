@@ -36,7 +36,7 @@
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OuO-tX-SSQ">
                         <rect key="frame" x="0.0" y="0.0" width="30" height="44"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
-                        <state key="normal" image="note.text" catalog="system"/>
+                        <state key="normal" image="note.text"/>
                         <connections>
                             <action selector="editContention" destination="KGk-i7-Jjw" eventType="touchUpInside" id="oET-sD-1ZK"/>
                         </connections>
@@ -61,6 +61,6 @@
     </objects>
     <resources>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
-        <image name="note.text" catalog="system" width="128" height="106"/>
+        <image name="note.text" width="13" height="12"/>
     </resources>
 </document>
