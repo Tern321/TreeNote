@@ -23,7 +23,6 @@ class SelectActionViewController:  UIViewController, UITableViewDelegate, UITabl
         tableView.rowHeight = UITableView.automaticDimension
         
         reloadData()
-        
     }
     func remove()
     {

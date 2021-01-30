@@ -60,13 +60,10 @@ class BookmarksViewController:  UIViewController, UITableViewDelegate, UITableVi
         return cells[indexPath.row]
     }
     
-    
-
     @IBAction func cancel()
     {
         self.dismiss(animated: true, completion: nil)
     }
-    
     
     func moveToContention(_ :Contention)
     {

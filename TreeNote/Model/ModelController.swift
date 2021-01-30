@@ -59,7 +59,7 @@ class ModelController {
         }
         if contentionsMap["root"] == nil
         {
-            addContentionInternal(Contention("root", "root","-1"))
+            addContentionInternal(Contention("root", "Root","-1"))
         }
         self.rootNode = contentionsMap["root"]
         self.rootNode.topic = true

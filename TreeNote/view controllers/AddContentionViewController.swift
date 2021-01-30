@@ -36,7 +36,6 @@ class AddContentionViewController: UIViewController, UIImagePickerControllerDele
         
         let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveAction(sender:)))
         let cameraButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(cameraAction(sender:)))
-        //        let galeryButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(galeryAction(sender:)))
         
         navigationItem.rightBarButtonItems = [ saveButton,cameraButton]
         scrollView.contentSize = CGSize(width: 1200, height: 1200)

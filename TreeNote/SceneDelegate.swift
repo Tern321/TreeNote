@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.navigationController = UINavigationController(rootViewController: rootViewCotroller)
         window!.rootViewController = self.navigationController
-//        window!.rootViewController = TestImageViewController(nibName: "TestImageViewController", bundle: nil)
+        
         window!.makeKeyAndVisible()
     }
 

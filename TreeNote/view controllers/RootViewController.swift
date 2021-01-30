@@ -6,8 +6,9 @@
 //
 
 import UIKit
+
  // rename to ContentionsVC
-class RootViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ContentionTableViewCellDelegate {
+class RootViewController: UIViewController, UITableViewDelegate, ContentionTableViewCellDelegate {
     @IBOutlet weak var tableView: UITableView!
     public var contentionId = "root"
     var selectedContentionId = "root"
@@ -36,6 +37,11 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
         
+        setupNavigationBar()
+    }
+    
+    func setupNavigationBar()
+    {
         let action = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(actionButton(sender:)))
         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButton(sender:)))
         let topic = UIBarButtonItem(title: "Bookmarks", style: .plain, target: self, action: #selector(topicButton(sender:)))
@@ -45,23 +51,6 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationItem.rightBarButtonItems = [ add, space, action, space, topic]
         
         self.navigationController?.isNavigationBarHidden = false
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return indexPath.row != 0
-    }
-    
-    func selectedCellIndexPath() -> IndexPath
-    {
-        let row = self.cells.firstIndex(where: { cell in return cell.contention().id == self.selectedContentionId})
-        if let row = row{
-            return IndexPath(row: row, section: 0)
-        }
-        else
-        {
-            self.selectedContentionId = self.cells[0].contention().id
-            return IndexPath(row: 0, section: 0)
-        }
     }
     
     func reloadData(_ reloadTable:Bool)
@@ -94,6 +83,7 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
         reloadData(true)
     }
     
+    // MARK: actions
     func selectContention(_ contention:Contention)
     {
         self.selectedContentionId = contention.id
@@ -126,12 +116,35 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
         let bookmarksViewController = BookmarksViewController(nibName: "BookmarksViewController", bundle: nil)
         self.present(bookmarksViewController, animated: true, completion: nil)
     }
+    
     @objc func addButton(sender: UIBarButtonItem)
     {
         let addContentionViewController = AddContentionViewController(nibName: "AddContentionViewController", bundle: nil)
         
         addContentionViewController.parentContentionId = self.selectedContentionId
         self.navigationController?.pushViewController(addContentionViewController, animated: true)
+    }
+}
+
+extension RootViewController: UITableViewDataSource
+{
+    // MARK: TableView datasourse
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.row != 0
+    }
+    
+    func selectedCellIndexPath() -> IndexPath
+    {
+        let row = self.cells.firstIndex(where: { cell in return cell.contention().id == self.selectedContentionId})
+        if let row = row{
+            return IndexPath(row: row, section: 0)
+        }
+        else
+        {
+            self.selectedContentionId = self.cells[0].contention().id
+            return IndexPath(row: 0, section: 0)
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -165,6 +178,4 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
         
 
     }
-    
-    
 }
